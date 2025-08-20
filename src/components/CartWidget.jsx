@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const CartWidget = () => {
+  const { cartQuantity } = useContext(CartContext);
+
   return (
-    <div style={{ fontSize: "1.5rem", cursor: "pointer" }}>
-      🛒 <span style={{ fontWeight: "bold" }}>3</span>
+    <div className="cart-widget">
+      🛒 <span style={{ marginLeft:'5px', fontWeight: 'bold' }}>{cartQuantity}</span>
     </div>
   );
 };
-
 
 export default CartWidget;

@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getProducts } from "../data/products";
 
 const ItemListContainer = ({ greeting }) => {
+  const [items, setItems] = useState([]);
+  const { categoryId } = useParams();
+
+  useEffect(() => {
+    getProducts().then((data) => {
+      if (categoryId) {
+        setItems(data.filter((prod) => prod.category === categoryId));
+      } else {
+        setItems(data);
+      }
+    });
+  }, [categoryId]);
+
   return (
-    <section style={{ padding: '3rem', textAlign: 'center', fontSize: '1.5rem' }}>
+    <section style={{ padding: "2rem" }}>
       <h2>{greeting}</h2>
-      <p>Pronto vas a poder ver nuestros mejores productos aca</p>
+      {items.map((prod) => (
+        <div key={prod.id}>
+          <h3>{prod.name}</h3>
+          <p>${prod.price}</p>
+          <a href={`/item/${prod.id}`}>Ver detalle</a>
+        </div>
+      ))}
     </section>
   );
 };
-
 
 export default ItemListContainer;
