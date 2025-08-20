@@ -14,7 +14,7 @@ function App() {
       <NavBar />
       <div className="container py-4">
         <Routes>
-          <Route path="/" element={<ItemListContainer greeting="¡Bienvenido a PixelGear!" />} />
+          <Route path="/" element={<ItemListContainer greeting="Bienvenido a PixelGear, donde tu setup sube de nivel" />} />
           <Route path="/category/:categoryId" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetailContainer />} />
           <Route path="*" element={<Navigate to="/" replace />} />

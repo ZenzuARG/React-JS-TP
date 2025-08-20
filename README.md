@@ -1,70 +1,113 @@
-# CreaTuLanding1-Zuliani
+# NavegaLasRutas-Zuliani
 
-Bienvenido a **PixelGear**, una tienda ficticia de accesorios gamer creada como parte del primer trabajo práctico del curso de React.js. Este proyecto marca el inicio del desarrollo de un e-commerce utilizando componentes base de React.
+Este proyecto corresponde a la **Entrega 2 del curso de React JS**, cuyo objetivo es implementar el sistema de navegación de una tienda ficticia llamada **PixelGear**, utilizando React Router, separación de componentes, promesas simuladas e integración de carrito.
 
-## 🛠️ Tecnologías usadas
+---
+
+## 🎯 Objetivos de la entrega
+
+- Implementar React Router para navegar entre:
+  - Catálogo general (`/productos`)
+  - Catálogo filtrado (`/category/:categoryId`)
+  - Detalle de producto (`/item/:id`)
+  - Secciones adicionales: Inicio, Sobre Nosotros, Contacto
+- Separar componentes contenedores (`ItemListContainer`, `ItemDetailContainer`) de componentes de presentación (`ItemCard`, `ItemDetail`)
+- Simular llamadas asincrónicas mediante **promesas + setTimeout**
+- Utilizar `useParams()` para leer parámetros de ruta
+- Usar `Array.map()` y `key` para renderizado de listas
+- Añadir página 404 con redirección
+- Implementar *CartContext* para manejar estado global del carrito y mostrar contador dinámico en el ícono
+
+---
+
+## 🛠️ Tecnologías aplicadas
 
 - React JS (Vite)
+- React Router DOM v6
+- Bootstrap (modo dark personalizado)
 - JavaScript ES6
-- CSS3 (responsivo)
-- Git + GitHub
+- Context API + Hooks (`useState`, `useEffect`, `useContext`, `useParams`)
+- Promises simuladas con `setTimeout()`
 
-## 🧩 Estructura de componentes
+---
+
+## 📁 Estructura relevante
 
 ```
 src/
-├── components/
-│   ├── NavBar.jsx
-│   ├── CartWidget.jsx
-│   └── ItemListContainer.jsx
-├── App.jsx
-└── main.jsx
+├─ assets/                   → Imágenes de productos
+├─ components/
+│  ├─ NavBar.jsx
+│  ├─ ItemCard.jsx
+│  ├─ ItemDetail.jsx
+│  ├─ ItemCount.jsx
+│  ├─ CartWidget.jsx
+│  └─ CartOffcanvas.jsx
+├─ containers/
+│  ├─ ItemListContainer.jsx
+│  └─ ItemDetailContainer.jsx
+├─ pages/
+│  ├─ SobreNosotros.jsx
+│  └─ Contacto.jsx
+├─ context/
+│  └─ CartContext.jsx
+├─ data/
+│  └─ products.js             → Promesa simulada con 15 productos
+├─ App.jsx
+└─ main.jsx
 ```
 
-- `NavBar`: Barra de navegación que contiene logo, links y el `CartWidget`.
-- `CartWidget`: Ícono de carrito de compras con un contador.
-- `ItemListContainer`: Componente que recibe un mensaje vía `props` y lo muestra como saludo de bienvenida.
+---
 
-## 🎯 Objetivos del TP
-
-✔️ Comprender los conceptos básicos de React y su estructura de componentes  
-✔️ Crear las bases para la homepage de un e-commerce  
-✔️ Utilizar props para pasar datos entre componentes
-
-## 💻 Cómo correr el proyecto
-
-1. Clonar este repositorio:
+## 🚀 Instalación y ejecución
 
 ```bash
-git clone https://github.com/ZenzuARG/React-TP1.git
-cd React-TP1
-```
-
-2. Instalar dependencias:
-
-```bash
+git clone https://github.com/ZenzuARG/NavegaLasRutas-Zuliani.git
+cd NavegaLasRutas-Zuliani
 npm install
-```
-
-3. Correr el servidor de desarrollo:
-
-```bash
 npm run dev
 ```
 
-Luego abrir en el navegador:  
-👉 [http://localhost:5173](http://localhost:5173)
+---
 
-## 🖼️ Preview responsivo
+## 🧭 Navegabilidad
 
-El sitio está diseñado para funcionar correctamente tanto en desktop como en pantallas móviles. El `NavBar` se adapta y mantiene el carrito visible en todo momento.
+| Ruta                     | Descripción                               |
+|--------------------------|-------------------------------------------|
+| `/`                      | Inicio                                    |
+| `/productos`             | Catálogo general de productos             |
+| `/category/:categoryId`  | Filtrado dinámico por categoría           |
+| `/item/:id`              | Vista detalle del producto                |
+| `/sobre-nosotros`        | Página institucional                      |
+| `/contacto`              | Datos de contacto                         |
+| `*`                      | Redirige a Inicio (404 friendly)          |
 
-## 🚀 Estado del proyecto
+---
 
-✅ Primera entrega finalizada  
-⚙️ Preparado para agregar productos dinámicamente en futuras entregas  
+## 🛒 Carrito
 
-## 📬 Contacto
+Se implementó el contexto `CartContext` para controlar el estado del carrito globalmente:
 
-Autor: Zenon Zuliani  
-GitHub: [ZenzuARG](https://github.com/ZenzuARG)
+- `<CartWidget />` muestra la cantidad total de unidades
+- `<CartOffcanvas />` permite ver, eliminar o vaciar el carrito desde cualquier página
+- `<ItemCount />` agrega cantidades configurables desde la vista de detalle
+
+---
+
+## 🎮 Temática & Estética
+
+PixelGear recrea una **tienda gamer** con estética *dark mode* y acentos violetas neón.  
+Se utilizan productos ficticios, imágenes locales y categorías tales como:
+
+- periféricos
+- audio
+- iluminación
+- mobiliario
+
+---
+
+## ✉️ Autor
+
+**Zenón Zuliani**  
+Curso React JS – Entrega 2  
+2025
